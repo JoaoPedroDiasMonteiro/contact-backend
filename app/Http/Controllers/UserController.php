@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(): ResourceCollection
     {
-        //
+        $users = User::query()->paginate();
+
+        return UserResource::collection($users);
     }
 
     public function store(Request $request)
