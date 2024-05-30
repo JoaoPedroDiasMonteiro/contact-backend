@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -32,8 +33,10 @@ class UserController extends Controller
         //
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): Response
     {
-        //
+        $user->delete();
+
+        return response()->noContent();
     }
 }
