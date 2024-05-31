@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
@@ -33,9 +33,13 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user): JsonResource
     {
-        //
+        $user->update(
+            $request->validated()
+        );
+
+        return new UserResource($user);
     }
 
     public function destroy(User $user): Response
