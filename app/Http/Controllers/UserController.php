@@ -36,7 +36,7 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request, User $user): JsonResource
     {
         $user->update(
-            $request->validated()
+            array_filter($request->validated())
         );
 
         return new UserResource($user);
