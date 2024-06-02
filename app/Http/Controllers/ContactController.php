@@ -28,9 +28,9 @@ class ContactController extends Controller
         return new ContactResource($contact);
     }
 
-    public function show(Contact $contact)
+    public function show(User $user, Contact $contact): JsonResource
     {
-        //
+        return new ContactResource($contact);
     }
 
     public function update(Request $request, Contact $contact)

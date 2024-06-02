@@ -9,4 +9,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::apiResource('users', Controllers\UserController::class)->names('users');
-Route::apiResource('users.contacts', Controllers\ContactController::class)->names('contacts');
+Route::apiResource('users.contacts', Controllers\ContactController::class)->scoped()->names('contacts');
