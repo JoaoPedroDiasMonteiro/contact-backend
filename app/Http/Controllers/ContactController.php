@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Contact\StoreContactRequest;
+use App\Http\Requests\Contact\UpdateContactRequest;
 use App\Http\Resources\ContactResource;
 use App\Models\Contact;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
 
 class ContactController extends Controller
 {
@@ -33,13 +34,19 @@ class ContactController extends Controller
         return new ContactResource($contact);
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update(UpdateContactRequest $request, User $user, Contact $contact): JsonResource
     {
-        //
+        $contact->update(
+            array_filter($request->validated())
+        );
+
+        return new ContactResource($contact);
     }
 
-    public function destroy(Contact $contact)
+    public function destroy(User $user, Contact $contact): Response
     {
-        //
+        $contact->delete();
+
+        return response()->noContent();
     }
 }
