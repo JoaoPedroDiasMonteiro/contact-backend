@@ -13,6 +13,8 @@ class Contact extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $guarded = [];
+
     protected function casts(): array
     {
         return [
