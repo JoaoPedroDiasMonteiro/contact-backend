@@ -1,0 +1,173 @@
+{
+    "info": {
+        "_postman_id": "8ada64a0-1fcd-4f19-a3a0-e88443074095",
+        "name": "User",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "Destroy",
+            "request": {
+                "method": "DELETE",
+                "url": {
+                    "raw": "http://localhost/api/users/60",
+                    "path": [
+                        "api",
+                        "users",
+                        "60"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "name": "List",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost/api/users?with=contacts",
+                    "query": [
+                        {
+                            "key": "with",
+                            "value": "contacts"
+                        }
+                    ],
+                    "variable": [],
+                    "path": [
+                        "api",
+                        "users"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Store",
+            "request": {
+                "method": "POST",
+                "url": {
+                    "raw": "http://localhost/api/users",
+                    "path": [
+                        "api",
+                        "users"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"testuser2@example.com\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Show",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "http://localhost/api/users/1",
+                    "path": [
+                        "api",
+                        "users",
+                        "1"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Update",
+            "request": {
+                "method": "PUT",
+                "url": {
+                    "raw": "http://localhost/api/users/20",
+                    "path": [
+                        "api",
+                        "users",
+                        "20"
+                    ],
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ]
+                },
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "User-Agent",
+                        "value": "Thunder Client (https://www.thunderclient.com)",
+                        "disabled": true
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    },
+                    "raw": "{\n  \"name\": \"\",\n  \"email\": \"joe@example.net\",\n  \"password\": \"password\",\n  \"password_confirmation\": \"password\"\n}"
+                }
+            }
+        }
+    ]
+}
