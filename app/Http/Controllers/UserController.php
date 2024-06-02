@@ -6,15 +6,23 @@ use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Illuminate\Contracts\Database\Query\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    public function index(): ResourceCollection
+    public function index(Request $request): ResourceCollection
     {
-        $users = User::query()->paginate();
+        $relationships = explode(',', $request->get('with', ''));
+
+        $users = User::query()
+            ->when(in_array('contacts', $relationships), function (Builder $query) {
+                $query->with(['contacts' => fn (Builder $query) => $query->limit(10)]);
+            })
+            ->paginate();
 
         return UserResource::collection($users);
     }
